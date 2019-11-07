@@ -39,6 +39,9 @@ def static_proxy(path):
     """ static folder serve """
     file_name = path.split('/')[-1]
     dir_name = os.path.join(PUBLIC_PATH, '/'.join(path.split('/')[:-1]))
+    LOG.debug(file_name)
+    LOG.debug(dir_name)
+
     return send_from_directory(dir_name, file_name)
 
 

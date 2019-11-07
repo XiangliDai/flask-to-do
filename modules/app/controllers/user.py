@@ -73,6 +73,8 @@ def user():
     if request.method == 'GET':
         query = request.args
         data = mongo.db.users.find_one(query, {"_id": 0})
+        data['password'] = data['password'].decode("utf-8")
+        LOG.info(data)
         return jsonify({'ok': True, 'data': data}), 200
 
     data = request.get_json()
